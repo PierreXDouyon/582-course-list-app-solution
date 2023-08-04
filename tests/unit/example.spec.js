@@ -41,18 +41,19 @@ it("renders props.course when passed", () => {
 });
 
 
-// import CourseItem from "@/components/CourseItem.vue";
-// it("shows the button when the course is not added", () => {
-//   const buttonText = "Add Course";
-//   const wrapper = shallowMount (CourseItem, {
-//     data: {
-//       isAdded: false,
-//  }});
-  // expect(wrapper.text()).toBe("buttonText");
-  // expect(wrapper.find("[data-testid='add']").text()).toBe(buttonText);
-  // expect(wrapper.text()) .toContain(buttonText);
-  // expect(wrapper.find("[data-testid='action']").text()).toBe(buttonText);
-// });
+it("shows the button when the course is not added", () => {
+  const wrapper = shallowMount(CourseItem);
+  const data = {  data() {
+    return {
+      isAdded: false,
+    };
+  },
+};
+  const buttonText = "Add Course";
+ 
+  expect (wrapper.find("[data-testid='add']").text()).toBe(buttonText);
+
+});
 
 // it("emits an action when the button is clicked", async () => {
 //   const wrapper = shallowMount(CourseItem);
