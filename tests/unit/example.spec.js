@@ -52,6 +52,7 @@ it("shows the add course button when the course is not added", () => {
   expect(wrapper.find("[data-testid='add']").text()).toBe(buttonText);
 });
 
+
 it("shows the add course button when the course is not full", () => {
   const wrapper = shallowMount(CourseItem);
 
@@ -59,6 +60,7 @@ it("shows the add course button when the course is not full", () => {
 
   expect(wrapper.find("[data-testid='add']").text()).toBe(buttonText);
 });
+
 
 it("hides the remove course button when the course is not added", async () => {
   const buttonText = "Remove Course";
@@ -75,37 +77,24 @@ it("hides the remove course button when the course is not added", async () => {
 
 // working on this error un comment after lesson
 
-// it("hides the add course button when the course enrollment is full", async () => {
-//   const buttonText = "Add Course";
-//   const wrapper = shallowMount(CourseItem);
-//   const course = {
-//     type: Object,
-//     default() {
-//       return {
+it("hides the add course button when the course enrollment is full", async () => {
+  const course = {
+    name: "Python",
+    description:
+      "Python is a programming language that lets you work quickly and integrate systems more effectively.",
+    hours: 50,
+    credits: 3,
+    location: "Online",
+    instructor: "John Doe",
+    id: 7,
+    enrollment: 20,
+};
+  const wrapper = shallowMount(CourseItem);
 
-//         name: "Python",
-//         description:
-//           "Python is a programming language that lets you work quickly and integrate systems more effectively.",
-//         hours: 50,
-//         credits: 3,
-//         location: "Online",
-//         instructor: "John Doe",
-//         id: 7,
-//         enrollment: 20,
-//           }
-//     },
-//   };
-//   // const computed = {
-//   //   computed: {
-//   //     isFull() {
-//   //       return this.enrollment >= 20;
-//   //     },
-//   //   },
-//   // };
-//   await wrapper.setProps({ course, enrollment: 20 });
-//   // await wrapper.setData({ isAdded: false });
-//   expect(wrapper.find("[data-testid='add']").exists()).toBe(false);
-// });
+  await wrapper.setProps({ course});
+
+  expect(wrapper.find("[data-testid='add']").exists()).toBe(false);
+});
 
 // it("shows the remove course button when the course is added", async () => {
 //   const buttonText = "Remove Course";
