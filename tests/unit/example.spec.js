@@ -15,10 +15,8 @@ import CourseItem from "@/components/CourseItem.vue";
 
 it("renders props.course when passed", () => { 
   const course = {
-  name: "CourseItem",
-  props: {
-    course: {
-      type: Object,
+
+        type: Object,
       default() {
         return {
           id: 0,
@@ -30,14 +28,12 @@ it("renders props.course when passed", () => {
           location: "online",
           enrollment: 0,
         };
-      },
+
     },
-  },
+ 
 };
-  const wrapper = shallowMount(CourseItem, {
-    props: { course },
-  });
-  expect(wrapper.text()).toMatch(course.name);
+  const wrapper = shallowMount(CourseItem);
+  expect(wrapper.find("[data-testid='course-name']").text()).toBe("Course Name");
 });
 
 

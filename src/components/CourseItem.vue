@@ -1,6 +1,6 @@
 <template>
   <div class="course" :class="{ isFull, isAdded }">
-    <h2>{{ course.name }}</h2>
+    <h2 data-testid="course-name">{{ course.name }}</h2>
     <p>{{ course.description }}</p>
     <ul>
       <li>credits : {{ course.credits }}</li>
