@@ -13,8 +13,12 @@
       <li>id: {{ course.id }}</li>
     </ul>
 
-    <button v-if="!isFull && !isAdded" @click="sendAdd">Add Course</button>
-    <button v-else-if="!isFull" @click="sendRemove">Remove Course</button>
+    <button data-testid="add" v-if="!isFull && !isAdded" @click="sendAdd">
+      Add Course
+    </button>
+    <button data-testid="remove" v-else-if="!isFull" @click="sendRemove">
+      Remove Course
+    </button>
   </div>
 </template>
 
