@@ -1,4 +1,5 @@
 <template>
+  <FormComponent></FormComponent>
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
   <h1>Course List App</h1>
@@ -20,6 +21,7 @@
 // import HelloWorld from "./components/HelloWorld.vue";
 // import CourseItem from "./components/CourseItem.vue";
 import CourseList from "./components/CourseList.vue";
+import FormComponent from "./components/FormComponent.vue";
 
 export default {
   name: "App",
@@ -108,6 +110,7 @@ export default {
     // HelloWorld,
     // CourseItem,
     CourseList,
+    FormComponent,
   },
   methods: {
     addCourse(id) {
