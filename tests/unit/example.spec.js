@@ -105,12 +105,21 @@ it("shows the remove course button when the course is added", async () => {
   expect(removeButton.text()).toBe("Remove Course");
 });
 
+it("emits 'addCourse' click event when add course button is clicked", async () => {
+  const course = {
+    id: 1,
+    name: "Test Course",
+    credits: 3,
+    hours: 50,
+    description: "Test description",
+    location: "Online",
+    enrollment: 10,
+  };
+  const wrapper = shallowMount(CourseItem, {
+    props: { course },
+  });
 
-
-// it("emits an action when the button is clicked", async () => {
-//   const wrapper = shallowMount(CourseItem);
-//   await wrapper.find("[data-testid='add']").trigger("click");
-//   expect(wrapper.emitted().sendAdd).toBeTruthy();
-//   console.log(wrapper.emitted().sendAdd);
-//   expect(wrapper.emitted().sendAdd[0][0]).toEqual(true);
-// });
+  await wrapper.find("[data-testid='add']").trigger("click");
+  expect(wrapper.emitted("addCourse")).toBeTruthy();
+  expect(wrapper.emitted("addCourse")[0]).toEqual([course.id]);
+});
