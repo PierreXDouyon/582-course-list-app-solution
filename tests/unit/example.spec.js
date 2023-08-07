@@ -13,6 +13,7 @@ describe("HelloWorld.vue", () => {
 
 import CourseItem from "@/components/CourseItem.vue";
 
+
 it("renders props.course when passed", () => { 
   const course = {
 
@@ -65,17 +66,11 @@ it("shows the add course button when the course is not full", () => {
 it("hides the remove course button when the course is not added", async () => {
   const buttonText = "Remove Course";
   const wrapper = shallowMount(CourseItem);
-  //   const data = {  data() {
-  //     return {
-  //       isAdded: false,
-  //     };
-  //   },
-  // };
+
   await wrapper.setData({ isAdded: false });
   expect(wrapper.find("[data-testid='remove']").exists()).toBe(false);
 });
 
-// working on this error un comment after lesson
 
 it("hides the add course button when the course enrollment is full", async () => {
   const course = {
@@ -96,28 +91,21 @@ it("hides the add course button when the course enrollment is full", async () =>
   expect(wrapper.find("[data-testid='add']").exists()).toBe(false);
 });
 
-// it("shows the remove course button when the course is added", async () => {
-//   const buttonText = "Remove Course";
-//   const wrapper = shallowMount(CourseItem);
-//   const method = {   methods: {
-//     sendAdd() {
-//       console.log(1);
-//       this.$emit("addCourse", this.course.id);
-//       console.log(3);
-//       this.isAdded = true;
-//     },
-//   },
-// };
 
-//   const data = {  data() {
-//   return {
-//     isAdded: true,
-//   };
-// },
-// };
-// expect (wrapper.find("[data-testid='remove']").exists()).toBe(true);
-//   await wrapper.setData({ isAdded: true });
-// });
+it("shows the remove course button when the course is added", async () => {
+  const wrapper = shallowMount(CourseItem, {
+    props: { course: {} },
+  });
+
+  await wrapper.setData({ isAdded: true });
+ 
+  const removeButton = wrapper.find("[data-testid='remove']");
+
+  expect(removeButton.exists()).toBe(true);
+  expect(removeButton.text()).toBe("Remove Course");
+});
+
+
 
 // it("emits an action when the button is clicked", async () => {
 //   const wrapper = shallowMount(CourseItem);
